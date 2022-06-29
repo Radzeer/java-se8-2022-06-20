@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Coffe {
+public class Coffee {
 
     private int price;
 }

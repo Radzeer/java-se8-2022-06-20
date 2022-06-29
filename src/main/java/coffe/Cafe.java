@@ -1,13 +1,7 @@
 package coffe;
 
-import lombok.AllArgsConstructor;
-
-import javax.swing.text.DateFormatter;
-import java.text.DateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.Month;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BinaryOperator;
@@ -29,7 +23,7 @@ public class Cafe {
         return orders.stream()
                 .filter(o -> o.getOrderDate().isEqual(date))
                 .flatMap(co ->co.getCoffes().stream())
-                .map(Coffe::getPrice)
+                .map(Coffee::getPrice)
                 .reduce(0,addOperator,addOperator);
     }
 
@@ -37,32 +31,35 @@ public class Cafe {
 
         var cafe = new Cafe(List.of(
                 new CoffeOrder(List.of(
-                        new Coffe(10),
-                        new Coffe(12),
-                        new Coffe(25)
+                        new Coffee(10),
+                        new Coffee(12),
+                        new Coffee(25)
                         )
                         ,LocalDate.of(2022, Month.JUNE,1)
 
                 ),
                 new CoffeOrder(List.of(
-                        new Coffe(10),
-                        new Coffe(25)
+                        new Coffee(10),
+                        new Coffee(25)
                         )
                         ,LocalDate.of(2022, Month.JUNE,10)
 
                 ),
                 new CoffeOrder(List.of(
-                        new Coffe(10),
-                        new Coffe(25),
-                        new Coffe(9)
+                        new Coffee(10),
+                        new Coffee(25),
+                        new Coffee(9)
                         )
                         ,LocalDate.of(2022, Month.JUNE,10)
 
                 )
         ));
-        cafe.addOrder(new CoffeOrder(List.of(new Coffe(20)),LocalDate.of(2022, Month.JUNE,22)));
 
-        System.out.println(cafe.getTotalIncome(LocalDate.of(2022,Month.JUNE,10)));
+        cafe.addOrder(new CoffeOrder(List.of(new Coffee(20)),LocalDate.of(2022, Month.JUNE,22)));
+
+        var date = LocalDate.of(2022,Month.JUNE,10);
+
+        System.out.printf("%s total income: %d%n",date,cafe.getTotalIncome(date));
 
     }
 }

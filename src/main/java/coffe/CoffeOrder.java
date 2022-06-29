@@ -8,10 +8,10 @@ import java.util.List;
 @AllArgsConstructor
 public class CoffeOrder {
 
-    private List<Coffe> coffes;
+    private List<Coffee> coffes;
     private LocalDate orderDate;
 
-    public List<Coffe> getCoffes() {
+    public List<Coffee> getCoffes() {
         return Collections.unmodifiableList(coffes);
     }
 
